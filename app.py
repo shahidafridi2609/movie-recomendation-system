@@ -68,7 +68,6 @@ def get_recommendations(title):
 def main():
     image = st.image('Images/net.png', use_column_width=True)
     
-    def main():
     st.title("Movie Recommendation System")
     choice = st.sidebar.selectbox(
         "Choose an option:",
