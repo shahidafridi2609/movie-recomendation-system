@@ -64,8 +64,7 @@ def get_recommendations(title):
     return recommended_movies
 
 def main():
-    image = st.image('Images/net.png', use_column_width=True)
-
+    st.title("Movie Recommendation System")
     choice = st.sidebar.selectbox(
         "Choose an option:",
         ("Home", "Demographic Filtering", "Content-Based Filtering", "Exit")
@@ -78,43 +77,37 @@ def main():
             "</div>",
             unsafe_allow_html=True
         )
-
-        image = st.image('Images/animals.gif', use_column_width=True)
-
     elif choice == "Demographic Filtering":
-        st.markdown("Top Rated and Popular Movies:")
-        st.dataframe(data[["Title", "IMDb Votes", "View Rating", "IMDb Score"]].head(10))
-        st.markdown("Top Rated and Popular Movies in bar-plot:")
-        st.pyplot(plot())
+        st.subheader("Top Rated and Popular Movies")
+        st.write(popular_movies[["Title", "IMDb Votes", "View Rating", "IMDb Score"]].head(10))
+        plot_popular_movies()
 
     elif choice == "Content-Based Filtering":
+        st.subheader("Movie Recommendations")
         movie_title = st.text_input("Enter a movie title for recommendations:")
-        if st.button("Get Recommendations"):
+        if movie_title:
             recommendations = get_recommendations(movie_title)
-
-            # Save the output as HTML
-            output_html = f"Recommended Movies for '{movie_title}':<br>"
-            if isinstance(recommendations, str):
-                output_html += st.markdown_to_html(recommendations)
-            else:
-                for idx, movie in enumerate(recommendations, start=1):
-                    output_html += st.markdown_to_html(f"{idx}. {movie}")
-
-            # Write HTML content to file after all recommendations are processed
-            with open("output.html", "w", encoding="utf-8") as file:
-                file.write(output_html)
-
-            # Display the recommendations in the Streamlit app
-            st.write(f"Recommended Movies for '{movie_title}':")
             if isinstance(recommendations, str):
                 st.write(recommendations)
             else:
                 for idx, movie in enumerate(recommendations, start=1):
                     st.write(f"{idx}. {movie}")
 
-    else:
+    elif choice == "Exit":
         st.write("Goodbye!")
-
 
 if __name__ == "__main__":
     main()
+add home to option like this  choice = st.sidebar.selectbox(
+        "Choose an option:",
+        ("Home", "Demographic Filtering", "Content-Based Filtering", "Exit")
+    )
+
+    if choice == "Home":
+        st.markdown(
+            "<div style='text-align: center;'>"
+            "<h3>Welcome to the Movie Recommendation System</h3>"
+            "</div>",
+            unsafe_allow_html=True
+        )
+
