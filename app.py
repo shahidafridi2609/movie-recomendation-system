@@ -68,6 +68,7 @@ def get_recommendations(title):
 def main():
     image = st.image('Images/net.png', use_column_width=True)
     
+    def main():
     st.title("Movie Recommendation System")
     choice = st.sidebar.selectbox(
         "Choose an option:",
@@ -75,8 +76,8 @@ def main():
     )
 
     if choice == "Home":
-       st.markdown(
-            "<div style='text-align: center;'>
+        st.markdown(
+            "<div style='text-align: center;'>"
             "<h3>Welcome to the Movie Recommendation System</h3>"
             "</div>",
             unsafe_allow_html=True
