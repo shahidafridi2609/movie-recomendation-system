@@ -5,6 +5,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 import streamlit as st
 
+st.set_page_config(page_title="Movie Recommendation System", page_icon="Images/animals.gif")
+
 data = pd.read_excel("netflix_data.xlsx")
 
 # Modify 'Title' to ensure it's of string type
@@ -64,6 +66,8 @@ def get_recommendations(title):
     return recommended_movies
 
 def main():
+ image = st.image('Images/net.png', use_column_width=True)
+    
     st.title("Movie Recommendation System")
     choice = st.sidebar.selectbox(
         "Choose an option:",
