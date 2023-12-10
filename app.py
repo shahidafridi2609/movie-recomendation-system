@@ -64,10 +64,24 @@ def get_recommendations(title):
     return recommended_movies
 
 def main():
+
+    st.title("Movie Recommendation System")
+    choice = st.sidebar.selectbox(
+        "Choose an option:",
+        ("Home", "Demographic Filtering", "Content-Based Filtering", "Exit")
+    )
+
+    if choice == "Home":
+        st.markdown(
+            "<div style='text-align: center;'>"
+            "<h3>Welcome to the Movie Recommendation System</h3>"
+            "</div>",
+            unsafe_allow_html=True
+        )
     st.title("Movie Recommendation System")
     choice = st.sidebar.selectbox("Choose an option:", ["Demographic Filtering", "Content-Based Filtering", "Exit"])
 
-    if choice == "Demographic Filtering":
+    elif choice == "Demographic Filtering":
         st.subheader("Top Rated and Popular Movies")
         st.write(popular_movies[["Title", "IMDb Votes", "View Rating", "IMDb Score"]].head(10))
         plot_popular_movies()
