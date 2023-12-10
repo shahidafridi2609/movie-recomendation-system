@@ -77,6 +77,8 @@ def main():
             "</div>",
             unsafe_allow_html=True
         )
+
+        image = st.image('Images/animals.gif', use_column_width=True)
     elif choice == "Demographic Filtering":
         st.markdown("Top Rated and Popular Movies:")
         st.dataframe(data[["Title", "IMDb Votes", "View Rating", "IMDb Score"]].head(10))
