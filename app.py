@@ -76,13 +76,13 @@ def main():
 
     if choice == "Home":
        st.markdown(
-            "<div style='text-align: center;'>"
+            "<div style='text-align: center;'>
             "<h3 style='text-align: center;'>Welcome to the Movie Recommendation System</h3>"
             "</div>",
             unsafe_allow_html=True
         )
-
         image = st.image('Images/animals.gif', use_column_width=True)
+        
     elif choice == "Demographic Filtering":
         st.markdown("Top Rated and Popular Movies:")
         st.dataframe(data[["Title", "IMDb Votes", "View Rating", "IMDb Score"]].head(10))
