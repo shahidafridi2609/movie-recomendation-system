@@ -7,8 +7,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Movie Recommendation System", page_icon="Images/animals.gif")
 
-def load_data():
-    return pd.read_excel("netflix_data.xlsx")
+data = pd.read_excel("netflix_data.xlsx")
 
 
 data = load_data()
