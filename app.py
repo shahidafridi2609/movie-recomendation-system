@@ -5,6 +5,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 import streamlit as st
 
+st.set_page_config(page_title="Movie Recommendation System", page_icon="Images/animals.gif")
+
 data = pd.read_excel("netflix_data.xlsx")
 
 # Modify 'Title' to ensure it's of string type
