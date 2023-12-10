@@ -24,14 +24,14 @@ def weighted_rating(x, C=C, m=m):
 popular_movies["Score"] = popular_movies.apply(weighted_rating, axis=1)
 popular_movies = popular_movies.sort_values('Score', ascending=False)
 
-def plot_popular_movies():
+def plot():
     top_rated_and_popular = popular_movies.head(10)
-    plt.figure(figsize=(12, 6))
-    plt.barh(top_rated_and_popular["Title"], top_rated_and_popular["Score"], align="center", color="skyblue")
-    plt.gca().invert_yaxis()
-    plt.title("Top 10 Popular Movies")
-    plt.xlabel("Score")
-    st.pyplot()
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.barh(top_rated_and_popular["Title"], top_rated_and_popular["Score"], align="center", color="skyblue")
+    ax.invert_yaxis()
+    ax.set_title("Top 10 Popular Movies")
+    ax.set_xlabel("Score")
+    return fig
 
 # Content-Based Filtering
 data["Languages"] = data["Languages"].fillna("")
@@ -77,10 +77,11 @@ def main():
             "</div>",
             unsafe_allow_html=True
         )
-    elif choice == "Demographic Filtering":
-        st.subheader("Top Rated and Popular Movies")
-        st.write(popular_movies[["Title", "IMDb Votes", "View Rating", "IMDb Score"]].head(10))
-        plot_popular_movies()
+   elif choice == "Demographic Filtering":
+        st.markdown("Top Rated and Popular Movies:")
+        st.dataframe(data[["Title", "IMDb Votes", "View Rating", "IMDb Score"]].head(10))
+        st.markdown("Top Rated and Popular Movies in bar-plot:")
+        st.pyplot(plot())
 
     elif choice == "Content-Based Filtering":
         st.subheader("Movie Recommendations")
