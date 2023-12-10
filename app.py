@@ -77,7 +77,7 @@ def main():
             "</div>",
             unsafe_allow_html=True
         )
-   elif choice == "Demographic Filtering":
+    elif choice == "Demographic Filtering":
         st.markdown("Top Rated and Popular Movies:")
         st.dataframe(data[["Title", "IMDb Votes", "View Rating", "IMDb Score"]].head(10))
         st.markdown("Top Rated and Popular Movies in bar-plot:")
