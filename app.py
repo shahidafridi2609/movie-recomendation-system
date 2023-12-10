@@ -65,7 +65,10 @@ def get_recommendations(title):
 
 def main():
     st.title("Movie Recommendation System")
-    choice = st.sidebar.selectbox("Choose an option:", ["Home","Demographic Filtering", "Content-Based Filtering", "Exit"])
+    choice = st.sidebar.selectbox(
+        "Choose an option:",
+        ("Home", "Demographic Filtering", "Content-Based Filtering", "Exit")
+    )
 
     if choice == "Home":
         st.markdown(
@@ -95,16 +98,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-add home to option like this  choice = st.sidebar.selectbox(
-        "Choose an option:",
-        ("Home", "Demographic Filtering", "Content-Based Filtering", "Exit")
-    )
-
-    if choice == "Home":
-        st.markdown(
-            "<div style='text-align: center;'>"
-            "<h3>Welcome to the Movie Recommendation System</h3>"
-            "</div>",
-            unsafe_allow_html=True
-        )
-
