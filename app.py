@@ -77,7 +77,7 @@ def main():
     if choice == "Home":
        st.markdown(
             "<div style='text-align: center;'>
-            "<h3 style='text-align: center;'>Welcome to the Movie Recommendation System</h3>"
+            "<h3>Welcome to the Movie Recommendation System</h3>"
             "</div>",
             unsafe_allow_html=True
         )
