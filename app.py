@@ -65,7 +65,10 @@ def get_recommendations(title):
 
 def main():
     st.title("Movie Recommendation System")
-    choice = st.sidebar.selectbox("Choose an option:", ["Home", "Demographic Filtering", "Content-Based Filtering", "Exit"])
+    choice = st.sidebar.selectbox(
+        "Choose an option:",
+        ("Home", "Demographic Filtering", "Content-Based Filtering", "Exit")
+    )
 
     if choice == "Home":
         st.markdown(
