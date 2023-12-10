@@ -26,12 +26,12 @@ popular_movies = popular_movies.sort_values('Score', ascending=False)
 
 def plot_popular_movies():
     top_rated_and_popular = popular_movies.head(10)
-    fig, ax = plt.subplots(figsize=(12, 6))
-    ax.barh(top_rated_and_popular["Title"], top_rated_and_popular["Score"], align="center", color="skyblue")
-    ax.invert_yaxis()
-    ax.set_title("Top 10 Popular Movies")
-    ax.set_xlabel("Score")
-    return fig
+    plt.figure(figsize=(12, 6))
+    plt.barh(top_rated_and_popular["Title"], top_rated_and_popular["Score"], align="center", color="skyblue")
+    plt.gca().invert_yaxis()
+    plt.title("Top 10 Popular Movies")
+    plt.xlabel("Score")
+    st.pyplot()
 
 # Content-Based Filtering
 data["Languages"] = data["Languages"].fillna("")
@@ -65,10 +65,7 @@ def get_recommendations(title):
 
 def main():
     st.title("Movie Recommendation System")
-    choice = st.sidebar.selectbox(
-        "Choose an option:",
-        ("Home", "Demographic Filtering", "Content-Based Filtering", "Exit")
-    )
+    choice = st.sidebar.selectbox("Choose an option:", ["Home","Demographic Filtering", "Content-Based Filtering", "Exit"])
 
     if choice == "Home":
         st.markdown(
@@ -80,8 +77,7 @@ def main():
     elif choice == "Demographic Filtering":
         st.subheader("Top Rated and Popular Movies")
         st.write(popular_movies[["Title", "IMDb Votes", "View Rating", "IMDb Score"]].head(10))
-        fig = plot_popular_movies()
-        st.pyplot(fig)
+        plot_popular_movies()
 
     elif choice == "Content-Based Filtering":
         st.subheader("Movie Recommendations")
@@ -99,3 +95,16 @@ def main():
 
 if __name__ == "__main__":
     main()
+add home to option like this  choice = st.sidebar.selectbox(
+        "Choose an option:",
+        ("Home", "Demographic Filtering", "Content-Based Filtering", "Exit")
+    )
+
+    if choice == "Home":
+        st.markdown(
+            "<div style='text-align: center;'>"
+            "<h3>Welcome to the Movie Recommendation System</h3>"
+            "</div>",
+            unsafe_allow_html=True
+        )
+
